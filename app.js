@@ -111,6 +111,14 @@ function resetVotes() {
   showToast("All votes have been reset. Voting is open!", "success");
 }
 
+function resetActivity() {
+  const ok = confirm("Reset the whole activity? This removes all votes and starts over as if the site was opened for the first time.");
+  if (!ok) return;
+  localStorage.removeItem(STORAGE_KEY);
+  sessionStorage.removeItem(STUDENT_KEY);
+  location.reload();
+}
+
 // ===== Rendering =====
 function render() {
   document.body.className = state.votingOpen ? "voting-open" : "voting-closed";
@@ -366,6 +374,7 @@ function init() {
   $("open-btn").addEventListener("click", () => setVotingOpen(true));
   $("close-btn").addEventListener("click", () => setVotingOpen(false));
   $("reset-btn").addEventListener("click", resetVotes);
+  $("reset-activity-btn").addEventListener("click", resetActivity);
   setupPinBoxes();
 
   render();
