@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Movie Night</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="voting-open">
+
+  <header class="site-header">
+    <div class="brand">🎬 Class Movie Night</div>
+    <div id="status-pill" class="status-pill">Voting is OPEN</div>
+  </header>
+
+  <nav class="tabs" aria-label="Sections">
+    <button class="tab active" data-section="home">🏠 Home</button>
+    <button class="tab" data-section="movies">🍿 Movies</button>
+    <button class="tab" data-section="myvote">⭐ My Vote</button>
+    <button class="tab" data-section="results">🏆 Results</button>
+    <button class="tab" data-section="teacher">🍎 Teacher</button>
+  </nav>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <main>
+
+    <!-- HOME -->
+    <section id="home" class="section active">
+      <h1>Class Movie Night</h1>
+      <p class="lead">Vote for the movie you want to watch on movie night! Look at the movies, then pick your favorite. You get one vote.</p>
+      <div id="home-status" class="status-banner"></div>
+
+      <div class="card name-card">
+        <label for="student-select">First, choose your name:</label>
+        <select id="student-select">
+          <option value="">Choose your name…</option>
+        </select>
+        <p id="greeting" class="greeting"></p>
+        <button id="start-btn" class="btn btn-primary btn-big">Start reviewing movies →</button>
+      </div>
+    </section>
+
+    <!-- MOVIES -->
+    <section id="movies" class="section">
+      <h2>Pick a Movie</h2>
+      <div id="movies-banner" class="status-banner"></div>
+      <div class="filter-row">
+        <span class="filter-label">Show:</span>
+        <div id="genre-filters" class="filter-buttons"></div>
+      </div>
+      <div id="movie-grid" class="movie-grid"></div>
+    </section>
+
+    <!-- MY VOTE -->
+    <section id="myvote" class="section">
+      <h2>My Vote</h2>
+      <div id="myvote-content"></div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results" class="section">
+      <h2>Results</h2>
+      <div id="results-content"></div>
+    </section>
+
+    <!-- TEACHER -->
+    <section id="teacher" class="section">
+      <h2>Teacher Controls</h2>
+      <div class="card">
+        <p>Voting is currently: <strong id="teacher-status"></strong></p>
+        <div class="btn-row">
+          <button id="open-btn" class="btn btn-open">✅ Open voting</button>
+          <button id="close-btn" class="btn btn-close">🛑 Close voting</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Who has voted?</h3>
+        <div class="count-row">
+          <div class="count-box"><span id="voted-count" class="count-num">0</span><span>students have voted</span></div>
+          <div class="count-box"><span id="not-voted-count" class="count-num">0</span><span>have not voted yet</span></div>
+        </div>
+        <p class="hint">Which movie each student chose is kept private.</p>
+      </div>
+
+      <div class="card">
+        <h3>Final results</h3>
+        <div id="teacher-results"></div>
+      </div>
+
+      <div class="card danger-card">
+        <h3>Start over</h3>
+        <p>This removes every vote and opens voting again. Students and movies stay the same.</p>
+        <button id="reset-btn" class="btn btn-danger">🔄 Reset all votes</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- TEACHER PIN POPUP -->
+  <div id="pin-modal" class="modal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="pin-title">
+      <div class="modal-icon">🍎</div>
+      <h3 id="pin-title">Teacher only</h3>
+      <p>Enter the 4-digit PIN to open the teacher controls.</p>
+      <div class="pin-boxes">
+        <input class="pin-box" type="tel" inputmode="numeric" maxlength="1" aria-label="Digit 1">
+        <input class="pin-box" type="tel" inputmode="numeric" maxlength="1" aria-label="Digit 2">
+        <input class="pin-box" type="tel" inputmode="numeric" maxlength="1" aria-label="Digit 3">
+        <input class="pin-box" type="tel" inputmode="numeric" maxlength="1" aria-label="Digit 4">
+      </div>
+      <p id="pin-error" class="pin-error"></p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
